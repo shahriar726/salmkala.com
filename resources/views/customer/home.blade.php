@@ -2,7 +2,7 @@
 
 @section('head-tag')
 
-    <title>فروشگاه آمازون</title>
+    <title>فروشگاه سلم کالا</title>
 @endsection
 
 @section('content')
