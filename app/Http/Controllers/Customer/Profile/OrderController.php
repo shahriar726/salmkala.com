@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\Customer\Profile;
+
+use App\Http\Controllers\Controller;
+use App\Models\Market\Order;
+
+class OrderController extends Controller
+{
+    public function index()
+    {
+        //age khkonei bename type bood bia show kon
+        if(isset(request()->type))
+        {
+            $orders = auth()->user()->orders()->where('order_status', request()->type)->orderBy('id', 'desc')->get();
+
+        }
+        else{
+            $orders = auth()->user()->orders()->orderBy('id', 'desc')->get();
+        }
+        return view('customer.profile.orders', compact('orders'));
+    }
+
+    public function show(Order $order){
+
+        return view('customer.profile.order-show', compact('order'));
+
+    }
+    public function detail(Order $order)
+    {
+        return view('customer.profile.order-detail', compact('order'));
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return back();
+    }
+}
