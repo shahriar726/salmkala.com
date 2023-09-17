@@ -87,7 +87,7 @@ class LoginRegisterController extends Controller
             //be koja mikhahim send konim
             $smsService->setTo(['0' . $user->mobile]);
             //matni ke mikhahi vared bokoni
-            $smsService->setText("مجموعه شاهان استور \n  کد تایید : $otpCode");
+            $smsService->setText("مجموعه سلم کالا \n  کد تایید : $otpCode");
             $smsService->setIsFlash(true);
 
             $messagesService = new MessageSerivce($smsService);
@@ -194,7 +194,7 @@ class LoginRegisterController extends Controller
             $smsService = new SmsService();
             $smsService->setFrom(Config::get('sms.otp_from'));
             $smsService->setTo(['0' . $user->mobile]);
-            $smsService->setText("مجموعه آمازون \n  کد تایید : $otpCode");
+            $smsService->setText("مجموعه سلم کالا \n  کد تایید : $otpCode");
             $smsService->setIsFlash(true);
 
             $messagesService = new MessageSerivce($smsService);
