@@ -8,6 +8,7 @@ use App\Models\Content\Page;
 use App\Models\Market\CartItem;
 use App\Models\Market\ProductCategory;
 use App\Models\Notification;
+use App\Models\Setting\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -55,6 +56,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('customer.layouts.header',function ($view){
             $Menus = Menu::where('status',1)->get();
             $view->with('menus',$Menus);
+        });
+        view()->composer('customer.layouts.header',function ($view){
+            $setting = Setting::whereId(1)->first();
+            $view->with('setting',$setting);
         });
     }
 }
