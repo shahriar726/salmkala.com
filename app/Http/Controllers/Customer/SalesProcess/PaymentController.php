@@ -12,6 +12,8 @@ use App\Models\Market\OnlinePayment;
 use App\Models\Market\Order;
 use App\Models\Market\OrderItem;
 use App\Models\Market\Payment;
+use App\Models\User;
+use App\Notifications\NewUserRegistered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
@@ -195,6 +197,14 @@ class PaymentController extends Controller
                 'transaction_id'=>session()->get('transaction')]);
             session()->forget('order_id');
             session()->forget('transaction');
+            //notification_for_admin
+            $details=[
+                'message'=>'یک سفارش انلاین انجام شد لطفا چک کنید'
+            ];
+            $adminUser=User::where('user_type', 1)->first();
+            $adminUser->notify(new NewUserRegistered($details));
+
+
             return redirect()->route('customer.home')->with('alert-section-success', 'پرداخت شما با موفقیت انجام شد');
         }
         catch(InvalidPaymentException $exception) {

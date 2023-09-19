@@ -36,6 +36,8 @@
 
                             @endif
 
+
+
                         </span>
                     <section id="header-notification" class="header-notifictation rounded">
                         <section class="d-flex justify-content-between">
@@ -59,7 +61,6 @@
                                     </section>
                                 </section>
                             </li>
-
                             @endforeach
                         </ul>
                     </section>
@@ -74,6 +75,15 @@
                                     {{ $unseenComments->count() }}
                                  </sup>
                                 @endif
+
+                                @if($completeOrders->count() !== 0 )
+                                @if($completeOrders->first()->delivery_status == 0 )
+                                    <sup class="badge badge-danger">
+                                    {{ $completeOrders->count() }}
+                                 </sup>
+                                @endif
+                                @endif
+
                         </i>
                         </span>
 
@@ -101,7 +111,23 @@
                                 </li>
 
                                 @endforeach
-
+                                        @if($completeOrders )
+                                    @foreach ($completeOrders as $completeOrder)
+                                            @if($completeOrder->delivery_status === 0 )
+                                        <li class="list-group-item list-groupt-item-action">
+                                    <section class="media">
+                                        <section class="media-body pr-1">
+                                            <section class="d-flex justify-content-between">
+                                                <h5 class="comment-user">پرداخت موفق کالا توسط <br> {{   $completeOrder->user->fullName }} انجام شد
+                                                    .</h5>
+                                            </section>
+                                         <p class="text-danger">{{ $completeOrder->DeliveryStatusValue }}<i class="fas fa-circle text-success comment-user-status"></i></p>
+                                        </section>
+                                    </section>
+                                </li>
+                                            @endif
+                                    @endforeach
+                                            @endif
 
                             </ul>
                         </section>
@@ -109,6 +135,8 @@
                     </section>
 
                     </span>
+
+
                 <span class="ml-3 ml-md-5 position-relative">
                         <span id="header-profile-toggle" class="pointer">
                             <img class="header-avatar" src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="">

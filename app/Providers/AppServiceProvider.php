@@ -6,6 +6,7 @@ use App\Models\Content\Comment;
 use App\Models\Content\Menu;
 use App\Models\Content\Page;
 use App\Models\Market\CartItem;
+use App\Models\Market\Order;
 use App\Models\Market\ProductCategory;
 use App\Models\Notification;
 use App\Models\Setting\Setting;
@@ -60,6 +61,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('customer.layouts.header',function ($view){
             $setting = Setting::whereId(1)->first();
             $view->with('setting',$setting);
+        });
+        view()->composer('admin.layouts.header',function ($view){
+
+            $view->with('completeOrders',Order::where('payment_status',1)->get());
         });
     }
 }
