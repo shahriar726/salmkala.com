@@ -14,7 +14,8 @@
 {{--                <section class="login-info">شماره موبایل  یا پست الکترونیک خود را وارد کنید</section>--}}
                 <section class="login-input-text ">
                     <div class="form-group">
-                        {{ __('قبل از ادامه، آیا می توانید آدرس ایمیل خود را با کلیک بر روی پیوندی که به تازگی برای شما ایمیل کرده ایم تأیید کنید؟ ') }}
+{{--                        {{auth()->user()->email}}--}}
+                        قبل از ادامه، آیا می توانید آدرس ایمیل خود را با کلیک بر روی پیوندی که به تازگی برای {{  auth()->user()->email}} ایمیل کرده ایم تأیید کنید؟
                     </div>
                     @if (session('status') == 'verification-link-sent')
                         <div class="text-success">
