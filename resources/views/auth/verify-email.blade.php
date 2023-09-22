@@ -4,8 +4,8 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+        <div class="mb-4 text-sm text-gray-600 justify-between text-right">
+            {{ __('قبل از ادامه، آیا می توانید آدرس ایمیل خود را با کلیک بر روی پیوندی که به تازگی برای شما ایمیل کرده ایم تأیید کنید؟ اگر ایمیلی را دریافت نکردید، با کمال میل یک ایمیل دیگر برای شما ارسال خواهیم کرد.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
@@ -25,21 +25,21 @@
                 </div>
             </form>
 
-            <div>
-                <a
-                    href="{{ route('profile.show') }}"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    {{ __('Edit Profile') }}</a>
+{{--            <div>--}}
+{{--                <a--}}
+{{--                    href="{{ route('profile.show') }}"--}}
+{{--                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"--}}
+{{--                >--}}
+{{--                    {{ __('Edit Profile') }}</a>--}}
 
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
+{{--                <form method="POST" action="{{ route('logout') }}" class="inline">--}}
+{{--                    @csrf--}}
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2">
-                        {{ __('Log Out') }}
-                    </button>
-                </form>
-            </div>
+{{--                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2">--}}
+{{--                        {{ __('Log Out') }}--}}
+{{--                    </button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
     </x-authentication-card>
 </x-guest-layout>

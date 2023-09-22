@@ -356,9 +356,9 @@
                                         </secrion>
                                     </section>
 
-                                    @foreach ($deliveryMethods as $deliveryMethod)
+                                    @foreach ($deliveryMethods as   $deliveryMethod)
 
-                                        <input type="radio" form="myForm" name="delivery_id" value="{{ $deliveryMethod->id }}" id="d-{{ $deliveryMethod->id }}" />
+                                        <input type="radio" form="myForm" name="delivery_id" value="{{ $deliveryMethod->id }}" data-delivery-price ={{ $deliveryMethod->amount }}  id="d-{{ $deliveryMethod->id }}" />
                                         <label for="d-{{ $deliveryMethod->id }}" class="col-12 col-md-4 delivery-wrapper mb-2 pt-2">
                                             <section class="mb-2">
                                                 <i class="fa fa-shipping-fast mx-1"></i>
@@ -390,7 +390,7 @@
 
                                 @foreach ($cartItems as $cartItem)
                                     @php
-                                        $totalProductPrice += $cartItem->cartItemProductPrice() * $cartItem->number;
+                                        $totalProductPrice += $cartItem->cartItemProductPrice() * $cartItem->number ;
                                         $totalDiscount += $cartItem->cartItemProductDiscount() * $cartItem->number;
                                     @endphp
                                 @endforeach
@@ -510,4 +510,53 @@
 
         })
     </script>
+
+    <script>
+        $(document).ready(function(){
+            bill();
+            //input color
+            $('input[name="delivery_id"]').change(function(){
+                bill();
+            })
+        })
+
+        function bill() {
+            if($('input[name="delivery_id"]:checked').length != 0){
+                var selected_delivery = $('input[name="delivery_id"]:checked');
+                $("#delivery_id").html(selected_delivery.attr('data-delivery-price'));
+            }
+            //price computing
+            var selected_delivery_method = 0;
+            var $totalProductPrice = parseFloat($('#product_price').attr('data-product-original-price'));
+            //
+            if($('input[name="delivery_id"]:checked').length != 0)
+            {
+                selected_delivery_method = parseFloat(selected_delivery.attr('data-delivery-price'));
+                // selected_delivery_method = parseFloat($('#delivery_id').attr('data-product-discount-price'));
+                //     alert(selected_delivery_method)
+                // console.log(selected_delivery_method);
+            }
+            //
+            // //final price
+            var total_price = $totalProductPrice + selected_delivery_method;
+            $('#total_price').html(toFarsiNumber(total_price));
+
+            function toFarsiNumber(number)
+            {
+                const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                // add comma
+                number = new Intl.NumberFormat().format(number);
+                //convert to persian
+                return number.toString().replace(/\d/g, x => farsiDigits[x]);
+            }
+        }
+
+    </script>
 @endsection
+
+
+
+
+
+
+

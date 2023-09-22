@@ -25,7 +25,7 @@
                 <section class="login-logo">
                     <a href="{{route('customer.home')}}"><img src="{{ asset('customer-assets/images/logo/4.png') }}" alt=""></a>
                 </section>
-                <section class="login-title"><a class="text-decoration-none" href="{{ route('login') }}">ورود </a> / <a class="text-decoration-none" href="{{ route('auth.customer.login-register-form') }}">ثبت نام </a></section>
+                <section class="login-title"><a class="text-decoration-none" href="{{ route('login') }}">ورود </a> / <a class="text-decoration-none" href="{{ route('register') }}">ثبت نام </a></section>
                 <section class="login-info">شماره موبایل  یا پست الکترونیک خود را وارد کنید</section>
                 <section class="login-input-text ">
                     <div class="form-group">

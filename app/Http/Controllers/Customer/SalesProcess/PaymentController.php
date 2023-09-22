@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Customer\SalesProcess;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Message\MessageSerivce;
+use App\Http\Services\Message\SMS\SmsService;
 use App\Http\Services\Payment\PaymentService;
+use App\Mail\ReceiveCodeOrderMail;
 use App\Models\Market\CartItem;
 use App\Models\Market\CashPayment;
 use App\Models\Market\Copan;
@@ -16,6 +19,8 @@ use App\Models\User;
 use App\Notifications\NewUserRegistered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 use Shetabit\Multipay\Invoice;
 
@@ -26,6 +31,8 @@ class PaymentController extends Controller
         $user = auth()->user();
         $cartItems = CartItem::where('user_id', $user->id)->get();
         $order = Order::where('user_id', Auth::user()->id)->where('order_status', 0)->first();
+
+//        dd(object_get($order,'delivery.amount'));
         return view('customer.sales-process.payment', compact('cartItems', 'order'));
     }
 
@@ -82,7 +89,9 @@ class PaymentController extends Controller
         $order = Order::where('user_id', Auth::user()->id)->where('order_status', 0)->first();
         $cartItems = CartItem::where('user_id', Auth::user()->id);
         $cash_receiver = null;
-
+        $order->update(
+             ['order_final_amount'=>object_get($order,'delivery.amount')+$order->order_final_amount]
+        );
         switch ($request->payment_type) {
             case '1':
                 $targetModel = OnlinePayment::class;
@@ -123,8 +132,11 @@ class PaymentController extends Controller
         session()->put('paymented',$paymented->id);
 
         $order->update(
-            ['order_status' => 3]
+            ['order_status' => 3,'delivery_amount'=>object_get($order,'delivery.amount')]
         );
+//        $order->update(
+//            ['delivery_amount'=>(int)$order->delivery_amount+(int)$order->order_final_amount]
+//        );
         session()->put('order_id',$order->id);
 
         foreach ($cartItems->get() as $cartItem) {
@@ -147,6 +159,7 @@ class PaymentController extends Controller
 
         if ($request->payment_type == 1) {
 //            $paymentService->zarinpal($order->order_final_amount, $order, $paymented);
+
             $invoice = (new Invoice())->amount($order->order_final_amount)->detail('خرید از سایت ...');
             return \Shetabit\Payment\Facade\Payment::via('zarinpal')->callbackUrl(route('customer.sales-process.payment-call-back'))/**/
                 ->purchase($invoice, function ($driver, $transactionId) use ($paymented, $cartItems) {
@@ -197,14 +210,24 @@ class PaymentController extends Controller
                 'transaction_id'=>session()->get('transaction')]);
             session()->forget('order_id');
             session()->forget('transaction');
+            //send sms when success
+//            $receiveCode = rand(111111, 999999);
+
+//            $customer=User::where('user_type', 0)->first();
+//            $smsService = new SmsService();
+//            $smsService->setFrom(Config::get('sms.otp_from'));
+//            $smsService->setTo(['0' . $customer->mobile]);
+//            $smsService->setText("مجموعه سلم کالا \n  کد تحویل : $receiveCode");
+//            $smsService->setIsFlash(true);
+//            $messagesService = new MessageSerivce($smsService);
+//            $messagesService->send();
             //notification_for_admin
             $details=[
                 'message'=>'یک سفارش انلاین انجام شد لطفا چک کنید'
             ];
             $adminUser=User::where('user_type', 1)->first();
             $adminUser->notify(new NewUserRegistered($details));
-
-
+//            $emailService=Mail::to($user->email)->send(new ReceiveCodeOrderMail($receiveCode));
             return redirect()->route('customer.home')->with('alert-section-success', 'پرداخت شما با موفقیت انجام شد');
         }
         catch(InvalidPaymentException $exception) {

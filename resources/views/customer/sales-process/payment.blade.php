@@ -218,7 +218,15 @@
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">جمع سبد خرید</p>
                                     <p class="fw-bolder"><span
-                                            id="total_price">{{ priceFormat($order->order_final_amount) }}</span>
+                                            id="total_price">{{ priceFormat($order->order_final_amount+$order->delivery->amount) }}</span>
+                                        تومان</p>
+                                </section>
+
+                                <section class="border-bottom mb-3"></section>
+                                <section class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted">هزینه ارسال</p>
+                                    <p class="fw-bolder"><span
+                                            id="total_price">{{ priceFormat($order->delivery->amount) }}</span>
                                         تومان</p>
                                 </section>
 
@@ -265,4 +273,5 @@
             })
         })
     </script>
+
 @endsection

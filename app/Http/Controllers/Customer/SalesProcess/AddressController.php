@@ -111,6 +111,7 @@ class AddressController extends Controller
 
 
         //user_id ra dashti mifrestam
+
         $inputs['user_id'] = $user->id;
         $inputs['order_final_amount'] = $finalPrice;
         $inputs['order_discount_amount'] = $totalFinalDiscountPriceWithNumbers;
