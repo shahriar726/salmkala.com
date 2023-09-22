@@ -211,7 +211,7 @@ class PaymentController extends Controller
             session()->forget('order_id');
             session()->forget('transaction');
             //send sms when success
-//            $receiveCode = rand(111111, 999999);
+            $receiveCode = rand(111111, 999999);
 
 //            $customer=User::where('user_type', 0)->first();
 //            $smsService = new SmsService();
@@ -227,7 +227,7 @@ class PaymentController extends Controller
             ];
             $adminUser=User::where('user_type', 1)->first();
             $adminUser->notify(new NewUserRegistered($details));
-//            $emailService=Mail::to($user->email)->send(new ReceiveCodeOrderMail($receiveCode));
+            $emailService=Mail::to(auth()->user()->email)->queue(new ReceiveCodeOrderMail($receiveCode,$order->id));
             return redirect()->route('customer.home')->with('alert-section-success', 'پرداخت شما با موفقیت انجام شد');
         }
         catch(InvalidPaymentException $exception) {
