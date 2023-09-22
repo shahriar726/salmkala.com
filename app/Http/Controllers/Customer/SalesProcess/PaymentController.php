@@ -203,7 +203,7 @@ class PaymentController extends Controller
                 $cartItem->delete();
             }
             $order->update(
-                ['order_status' => 3,'payment_status' => 1]
+                ['order_status' => 1,'payment_status' => 1,'delivery_object'=>rand(111111, 999999)]
             );
             $peymented->update(['reference_code'=>$payment->getReferenceId(),
                 'gateway'=>$payment->getDriver(),
@@ -212,11 +212,12 @@ class PaymentController extends Controller
             session()->forget('transaction');
             //send sms when success
             $receiveCode = rand(111111, 999999);
+//            $receiveCode = auth()->user()->mobile;
 
 //            $customer=User::where('user_type', 0)->first();
 //            $smsService = new SmsService();
 //            $smsService->setFrom(Config::get('sms.otp_from'));
-//            $smsService->setTo(['0' . $customer->mobile]);
+//            $smsService->setTo(['0' . auth()->user()->mobile]);
 //            $smsService->setText("مجموعه سلم کالا \n  کد تحویل : $receiveCode");
 //            $smsService->setIsFlash(true);
 //            $messagesService = new MessageSerivce($smsService);
@@ -227,7 +228,7 @@ class PaymentController extends Controller
             ];
             $adminUser=User::where('user_type', 1)->first();
             $adminUser->notify(new NewUserRegistered($details));
-            $emailService=Mail::to(auth()->user()->email)->queue(new ReceiveCodeOrderMail($receiveCode,$order->id));
+            $emailService=Mail::to(auth()->user()->email)->send(new ReceiveCodeOrderMail($order->delivery_object,$order->id));
             return redirect()->route('customer.home')->with('alert-section-success', 'پرداخت شما با موفقیت انجام شد');
         }
         catch(InvalidPaymentException $exception) {

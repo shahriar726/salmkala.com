@@ -10,9 +10,9 @@ class OrderController extends Controller
 {
     public function newOrders()
     {
-        $orders = Order::where('order_status', 0)->get();
+        $orders = Order::where('order_status', 1)->get();
         foreach ($orders as $order) {
-            $order->order_status = 1;
+            $order->order_status = 3;
             $result = $order->save();
         }
         return view('admin.market.order.index', compact('orders'));

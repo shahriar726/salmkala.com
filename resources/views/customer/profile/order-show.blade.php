@@ -30,7 +30,7 @@
                         <tbody>
 
                         <tr class="table-primary">
-                            <th>{{ $order->id }}</th>
+                            <th>{{ $order->id }} </th>
                             <td class="width-8-rem text-left">
                                 <a href="" class="btn btn-dark btn-sm text-white" id="print">
                                     <i class="fa fa-print"></i>
@@ -205,6 +205,12 @@
                             <th>وضعیت سفارش</th>
                             <td class="text-left font-weight-bolder">
                                 {{ $order->order_status_value }}
+                            </td>
+                        </tr>
+                        <tr class="border-bottom">
+                            <th>کد تحویل</th>
+                            <td class="text-left font-weight-bolder">
+                                {{ $order->delivery_object}}
                             </td>
                         </tr>
 

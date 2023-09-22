@@ -75,6 +75,9 @@
                                             <section class="order-item-id"><i class="fa fa-id-card-alt"></i>کد سفارش :
                                                 {{ $order->id }}
                                             </section>
+                                            <section class="order-item-id"><i class="fa fa-id-card-alt"></i>کد تحویل :
+                                                {{ $order->delivery_object }}
+                                            </section>
                                             <section class="order-item-status"><i class="fa fa-clock"></i>
                                                 {{ $order->payment_status_value }}
                                             </section>
