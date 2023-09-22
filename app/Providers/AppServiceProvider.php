@@ -51,8 +51,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('Page',$Page);
         });
         view()->composer('customer.layouts.header',function ($view){
-            $categories = ProductCategory::whereNull('parent_id')->get();
-            $view->with('categories',$categories);
+            $product_categories = ProductCategory::where('status' , 1)->where('show_in_menu', 1)->whereNull('parent_id')->get();
+            $view->with('categories',$product_categories);
         });
         view()->composer('customer.layouts.header',function ($view){
             $Menus = Menu::where('status',1)->get();

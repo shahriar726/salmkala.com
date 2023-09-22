@@ -155,7 +155,7 @@
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
 
-                                @foreach ($relatedProducts as $relatedProduct)
+                            @foreach ($relatedProducts->take(10) as $relatedProduct)
 
                                     <section class="item">
                                         <section class="lazyload-item-wrapper">

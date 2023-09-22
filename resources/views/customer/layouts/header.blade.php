@@ -156,15 +156,52 @@
                             دسته بندی کالاها
                         </section>
                         <section class="sublist-wrapper position-absolute w-100">
-                            <form  action="{{ route('customer.products', ['category' => request()->category ? request()->category->id : null]) }}"
-                                   method="get">
                             <section class="position-relative sublist-area">
-                                @include('customer.layouts.partials.header-categories', ['categories' => $categories])
+                                @foreach ($categories as $product_categorie )
+
+                                    <section class="sublist-item">
+                                        <section  class="sublist-item-toggle"><a href="{{ route('customer.products' , ['category' => $product_categorie->id]) }}" class="sidebar-nav-item-title sub-category  ">{{ $product_categorie->name }}</a></section>
+
+                                        <section class="sublist-item-sublist">
+                                            <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                                <section class="sublist-column col">
+
+                                                    @foreach ($product_categorie->children()->where('status' , 1)->where('show_in_menu', 1)->get() as $child1 )
+
+                                                        <a href="{{ route('customer.products' , ['category' => $child1->id]) }}" class="sub-category">{{ $child1->name }}</a>
+                                                        @foreach ($child1->children as $child2 )
+
+                                                            <a href="{{ route('customer.products' , ['category' => $child2->id]) }}" class="sub-sub-category">{{ $child2->name }}</a>
+
+
+                                                        @endforeach
+
+
+
+                                                    @endforeach
+
+
+
+                                                </section>
+
+
+                                            </section>
+                                        </section>
+                                    </section>
+
+
+                                @endforeach
+
 
                             </section>
-                            </form>
                         </section>
                     </section>
+
+                </section>
+                        </section>
+                    </section>
+
+
                     <section class="border-start my-2 mx-1"></section>
                     @foreach($menus as $menu)
                     <section class="navbar-item"><a href="{{$menu->url}}">{{$menu->name}}</a></section>

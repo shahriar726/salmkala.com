@@ -92,7 +92,7 @@ class CartController extends Controller
     public function removeFromCart(CartItem $cartItem)
     {
         //aya in user id ba kasi ke login karde = ast
-        if($cartItem->user_id === Auth::user()->id)
+        if($cartItem->user_id == Auth::user()->id)
         {
             $cartItem->forceDelete();
         }
