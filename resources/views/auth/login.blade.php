@@ -26,10 +26,10 @@
                     <a href="{{route('customer.home')}}"><img src="{{ asset('customer-assets/images/logo/4.png') }}" alt=""></a>
                 </section>
                 <section class="login-title"><a class="text-decoration-none" href="{{ route('login') }}">ورود </a> / <a class="text-decoration-none" href="{{ route('register') }}">ثبت نام </a></section>
-                <section class="login-info">شماره موبایل  یا پست الکترونیک خود را وارد کنید</section>
+{{--                <section class="login-info">شماره موبایل  یا پست الکترونیک خود را وارد کنید</section>--}}
                 <section class="login-input-text ">
                     <div class="form-group">
-{{--                        <label for="login">شماره موبایل یا پست الکترونیک</label>--}}
+                        <x-label for="login" value="{{ __('شماره موبایل  یا پست الکترونیک') }}" />
                         <input type="text"   name="login" class=" form-control form-control-sm @error('login') is-invalid @enderror"   value="{{ old('login') }} ">
                     </div>
                     @error('login')
@@ -42,7 +42,8 @@
                 </section>
                 <section class="login-input-text ">
                     <div class="form-group">
-                        <input type="password" placeholder="رمز عبور خود را وارد کنید" name="password" class=" form-control form-control-sm @error('password') is-invalid @enderror">
+                        <x-label for="password" value="{{ __('رمز') }}" />
+                        <input type="password"  name="password" class=" form-control form-control-sm @error('password') is-invalid @enderror">
                     </div>
                     @error('password')
                     <span class="alert_required    text-white p-1 rounded" role="alert">
