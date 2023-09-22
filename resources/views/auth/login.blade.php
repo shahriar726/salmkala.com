@@ -30,7 +30,7 @@
                 <section class="login-input-text ">
                     <div class="form-group">
                         <x-label for="login" value="{{ __('شماره موبایل  یا پست الکترونیک') }}" />
-                        <input type="text"   name="login" class=" form-control form-control-sm @error('login') is-invalid @enderror"   value="{{ old('login') }} ">
+                        <input type="text"  name="login" class=" form-control form-control-sm @error('login') is-invalid @enderror"   value="{{ old('login') }} ">
                     </div>
                     @error('login')
                     <span class="alert_required    text-white p-1 rounded" role="alert">

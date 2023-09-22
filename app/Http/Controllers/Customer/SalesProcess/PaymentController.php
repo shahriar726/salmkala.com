@@ -217,7 +217,7 @@ class PaymentController extends Controller
 //            $customer=User::where('user_type', 0)->first();
 //            $smsService = new SmsService();
 //            $smsService->setFrom(Config::get('sms.otp_from'));
-//            $smsService->setTo(['0' . auth()->user()->mobile]);
+//            $smsService->setTo([ auth()->user()->mobile]);
 //            $smsService->setText("مجموعه سلم کالا \n  کد تحویل : $receiveCode");
 //            $smsService->setIsFlash(true);
 //            $messagesService = new MessageSerivce($smsService);

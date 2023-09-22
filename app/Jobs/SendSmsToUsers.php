@@ -42,7 +42,7 @@ class SendSmsToUsers implements ShouldQueue
             //send sms
             $smsService = new SmsService();
             $smsService->setFrom(Config::get('sms.otp_from'));
-            $smsService->setTo(['0' . $user->mobile]);
+            $smsService->setTo([ $user->mobile]);
             $smsService->setText($this->sms->body);
             $smsService->setIsFlash(true);
             $messagesService = new MessageSerivce($smsService);

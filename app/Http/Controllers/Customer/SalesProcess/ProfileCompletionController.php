@@ -41,7 +41,7 @@ class ProfileCompletionController extends Controller
                 $type = 0; // 0 => mobile
 
                 //all mobile numbers in one format (9**********)
-                $mobile = ltrim($mobile, '0');
+//                $mobile = ltrim($mobile, '0');
                 $mobile = substr($mobile, 0, 2) == '98' ? substr($mobile, 2) : $mobile;
                 $mobile = str_replace('+98', '', $mobile);
 

@@ -45,7 +45,7 @@ class LoginRegisterController extends Controller
 
 
             // all mobile numbers are in on format 9** *** ***
-            $inputs['id'] = ltrim($inputs['id'], '0');
+//            $inputs['id'] = ltrim($inputs['id'], '0');
             $inputs['id'] = substr($inputs['id'], 0, 2) === '98' ? substr($inputs['id'], 2) : $inputs['id'];
             $inputs['id'] = str_replace('+98', '', $inputs['id']);
 
@@ -85,7 +85,7 @@ class LoginRegisterController extends Controller
             $smsService = new SmsService();
             $smsService->setFrom(Config::get('sms.otp_from'));
             //be koja mikhahim send konim
-            $smsService->setTo(['0' . $user->mobile]);
+            $smsService->setTo([ $user->mobile]);
             //matni ke mikhahi vared bokoni
             $smsService->setText("مجموعه سلم کالا \n  کد تایید : $otpCode");
             $smsService->setIsFlash(true);
@@ -193,7 +193,7 @@ class LoginRegisterController extends Controller
             //send sms
             $smsService = new SmsService();
             $smsService->setFrom(Config::get('sms.otp_from'));
-            $smsService->setTo(['0' . $user->mobile]);
+            $smsService->setTo([ $user->mobile]);
             $smsService->setText("مجموعه سلم کالا \n  کد تایید : $otpCode");
             $smsService->setIsFlash(true);
 
