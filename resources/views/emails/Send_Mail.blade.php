@@ -7,5 +7,6 @@ The body of your message.
 {{$body}}
 
 Thanks,<br>
-{{ config('app.name') }}
+سلم کالا
+{{--{{ config('app.name') }}--}}
 </x-mail::message>
