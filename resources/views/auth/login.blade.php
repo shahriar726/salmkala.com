@@ -53,7 +53,7 @@
                                 </span>
                     @enderror
                 </section>
-                <section class="login-btn d-grid g-2"><button class="btn btn-danger">ورود به آمازون</button></section>
+                <section class="login-btn d-grid g-2"><button class="btn btn-danger">ورود به فروشگاه</button></section>
                 <section class="login-terms-and-conditions"><a class="text-decoration-none" href="{{ route('auth.customer.login-register-form') }}">رمزعبور خود را فراموش کردم</a></section>
             </section>
         </form>

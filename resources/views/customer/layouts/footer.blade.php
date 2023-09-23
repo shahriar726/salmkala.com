@@ -69,8 +69,12 @@
                         <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-linkedin"></i></a>
                     </section>
+                    <section class="my-3">
+                        <img src="{{ asset('customer-assets/images/logo/4.png') }}" alt="logo" class="text-muted text-decoration-none me-5 w-full flex items-center mt-4 lg:mt-0 justify-center lg:justify-end">
+                    </section>
                 </section>
             </section>
+
         </section>
         <section class="row my-5">
             <section class="col">
