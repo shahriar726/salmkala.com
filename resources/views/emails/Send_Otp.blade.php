@@ -4,10 +4,10 @@
 کد احراز هویت:**{{$otpCode}}**
 
 <x-mail::button :url="$url">
-Button Text
+<h1>ورود به سلم کالا</h1>
 </x-mail::button>
-<h5>  password رمز شما  </h5>
-<h5>برای تغییر در پنل کاربری اقدام کنید</h5>
+<h5>  لطفا با فراموشی رمز ورود  </h5>
+<h5>رمز خود را تغییر دهید</h5>
 Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message>

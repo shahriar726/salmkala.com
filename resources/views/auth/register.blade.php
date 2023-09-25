@@ -80,8 +80,10 @@
                                 </span>
                     @enderror
                 </section>
-                <section class="login-btn d-grid g-2"><button class="btn btn-danger">ورود به فروشگاه</button></section>
-                <section class="login-terms-and-conditions"><a class="text-decoration-none" href="{{ route('auth.customer.login-register-form') }}">ورود یک بار مصرف</a></section>
+                <section class="login-btn d-grid "><button class="btn btn-danger">ورود به فروشگاه</button></section>
+                                       <section class="text-center mb-4"><span>یا</span></section>
+                <section class="login-btn d-grid "><a class="text-decoration-none btn btn-primary" href="{{ route('auth.customer.login-register-form') }}">ورود با رمز یکبار مصرف</a></section>
+{{--                <section class="login-terms-and-conditions"><a class="text-decoration-none" href="{{ route('auth.customer.login-register-form') }}">ورود با رمز یکبار مصرف</a></section>--}}
             </section>
         </form>
     </section>
