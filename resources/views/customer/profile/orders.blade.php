@@ -89,14 +89,14 @@
 
                                         </section>
                                         <section class="order-item-link"><a href="{{ route('customer.profile.order.show', $order) }}">نمایش</a></section>
-                                        @if( $order->payment_status !== 1)
-                                        <section class="order-item-link"><a class="text-danger" href="{{route('customer.sales-process.address-and-delivery')}}">پرداخت سفارش</a></section>
-                                            <form class="d-inline" action="{{route('customer.profile.order.destroy',$order->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="dropdown-item  text-danger"><i class="fa fa-close"></i> حذف</button>
-                                            </form>
-                                            @endif
+{{--                                        @if( $order->payment_status !== 1)--}}
+{{--                                        <section class="order-item-link"><a class="text-danger" href="{{route('customer.sales-process.address-and-delivery')}}">پرداخت سفارش</a></section>--}}
+{{--                                            <form class="d-inline" action="{{route('customer.profile.order.destroy',$order->id)}}" method="post">--}}
+{{--                                                @csrf--}}
+{{--                                                @method('DELETE')--}}
+{{--                                                <button type="submit" class="dropdown-item  text-danger"><i class="fa fa-close"></i> حذف</button>--}}
+{{--                                            </form>--}}
+{{--                                            @endif--}}
                                     </section>
 
                                 </section>
