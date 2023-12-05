@@ -115,11 +115,27 @@
                                                     <section class="product-name"><h3>{{ Str::limit($mostVisitedProduct->name, 10) }}</h3></section>
                                                     <section class="product-price-wrapper">
                                                         <section class="product-discount">
-                                                            {{-- <span class="product-old-price">6,895,000 </span> --}}
-                                                            {{-- <span class="product-discount-amount">10%</span> --}}
+
+{{--                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>--}}
+                                                            <span class="product-price">{{ priceFormat($mostVisitedProduct->price) }} </span>
+{{--                                                             <span class="product-old-price">{{ priceFormat($mostVisitedProduct->price) }} </span>--}}
+
+                                                            @php
+
+                                                                $amazingSale = $mostVisitedProduct->activeAmazingSales();
+
+                                                            @endphp
+
+                                                            @if(!empty($amazingSale))
+                                                             <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+
+                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
+                                                            @endif
                                                         </section>
-                                                        <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>
-                                                    </section>
+{{--                                                        <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }}  تومان</section>--}}
+                                                        </section>
+
+
                                                     <section class="product-colors">
                                                         @foreach ($mostVisitedProduct->colors()->get() as $color)
                                                             <section class="product-colors-item" style="background-color: {{ $color->color }};"></section>
@@ -219,10 +235,24 @@
                                                     <section class="product-name"><h3>{{ Str::limit($offerProduct->name, 10) }}</h3></section>
                                                     <section class="product-price-wrapper">
                                                         <section class="product-discount">
-                                                            {{-- <span class="product-old-price">6,895,000 </span> --}}
-                                                            {{-- <span class="product-discount-amount">10%</span> --}}
+
+                                                            {{--                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>--}}
+
+                                                            <span class="product-price">{{ priceFormat($offerProduct->price) }} </span>
+
+                                                            @php
+
+                                                                $amazingSale = $offerProduct->activeAmazingSales();
+
+                                                            @endphp
+
+                                                            @if(!empty($amazingSale))
+                                                                <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+
+                                                                <section class="product-price">{{ priceFormat($offerProduct->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
+                                                            @endif
                                                         </section>
-                                                        <section class="product-price">{{ priceFormat($offerProduct->price) }} تومان</section>
+                                                        {{--                                                        <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }}  تومان</section>--}}
                                                     </section>
                                                     <section class="product-colors">
                                                         @foreach ($offerProduct->colors()->get() as $color)

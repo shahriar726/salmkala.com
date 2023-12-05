@@ -89,8 +89,20 @@
                                                 <h3>{{ $product->name }}</h3>
                                             </section>
                                             <section class="product-price-wrapper">
-                                                <section class="product-price">{{ number_format($product->price) }}
-                                                </section>
+                                                <span class="product-old-price">{{priceFormat($product->price) }}  </span>
+{{--                                                <section class="product-price">{{ number_format($product->price) }}</section>--}}
+                                                @php
+
+                                                    $amazingSale = $product->activeAmazingSales();
+
+                                                @endphp
+
+                                                @if(!empty($amazingSale))
+                                                    <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+
+                                                    <section class="product-price">{{ priceFormat($product->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
+                                                @endif
+
                                             </section>
                                         </a>
                                     </section>
