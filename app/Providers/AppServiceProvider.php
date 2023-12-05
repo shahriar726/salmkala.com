@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        Auth::loginUsingId(1);
+        Auth::loginUsingId(1);
         //with('unseenComments) => har nami ke khasti bbari ra benevis hamoon compact ast
         view()->composer('admin.layouts.header',function ($view){
 

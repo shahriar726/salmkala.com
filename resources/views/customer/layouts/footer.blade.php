@@ -37,8 +37,8 @@
             <section class="col-md">
                 <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">شرایط و قوانین</a>
                 </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">درباره ما</a></section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">تماس با ما</a>
+                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="/page/درباره-ما">درباره ما</a></section>
+                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="https://wa.me/989162942830">تماس با ما</a>
                 </section>
                 <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">فرصت های شغلی</a>
                 </section>
@@ -46,39 +46,16 @@
                 </section>
             </section>
 
-            <section class="col-md">
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">شرایط و قوانین</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">درباره ما</a></section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">تماس با ما</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">فرصت های شغلی</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">سوالات متداول</a>
-                </section>
-            </section>
 
-            <section class="col-md">
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">شرایط و قوانین</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">درباره ما</a></section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">تماس با ما</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">فرصت های شغلی</a>
-                </section>
-                <section><a class="text-decoration-none text-muted d-inline-block my-2" href="#">سوالات متداول</a>
-                </section>
-            </section>
 
             <section class="col-md-5">
                 <section>
                     <section class="text-dark fw-bold">با ما همراه باشید</section>
                     <section class="my-3">
-                        <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://instagram.com/_shahriarvsh_?igshid=OGQ5ZDc2ODk2ZA==" class="text-muted text-decoration-none me-5"><i class="fab fa-instagram"></i></a>
+                        <a href="https://telegram.me/sh726" class="text-muted text-decoration-none me-5"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/989162942830" class="text-muted text-decoration-none me-5"><i class="fab fa-whatsapp"></i></a>
+
                     </section>
                     <section class="my-3">
                         <img src="{{ asset('customer-assets/images/logo/8.png') }}" alt="logo"

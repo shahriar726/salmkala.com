@@ -76,7 +76,7 @@
                         </section>
                         <!-- start vontent header -->
                         <section class="lazyload-wrapper" >
-                            <section class="lazyload light-owl-nav owl-carousel owl-theme">
+                            <section class="brands dark-owl-nav owl-carousel owl-theme">
 
                                 @foreach ($mostVisitedProducts as $mostVisitedProduct)
 
@@ -181,7 +181,7 @@
                         </section>
                         <!-- start vontent header -->
                         <section class="lazyload-wrapper" >
-                            <section class="lazyload light-owl-nav owl-carousel owl-theme">
+                            <section class="brands dark-owl-nav owl-carousel owl-theme">
 
                                 @foreach ($offerProducts as $offerProduct)
 
