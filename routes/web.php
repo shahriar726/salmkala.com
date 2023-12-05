@@ -448,7 +448,7 @@ Route::namespace('SalesProcess')->group(function () {
     //profile completion
     // yekish vase show profile //va update profile
     Route::get('/profile-completion', [ProfileCompletionController::class, 'profileCompletion'])->name('customer.sales-process.profile-completion');
-    Route::middleware('verified')->post('/profile-completion', [ProfileCompletionController::class, 'update'])->name('customer.sales-process.profile-completion-update');
+    Route::post('/profile-completion', [ProfileCompletionController::class, 'update'])->name('customer.sales-process.profile-completion-update');
 
     Route::middleware('profile.completion')->group(function () {
         //address
