@@ -116,8 +116,6 @@
                                                     <section class="product-price-wrapper">
                                                         <section class="product-discount">
 
-{{--                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>--}}
-                                                            <span class="product-price">{{ priceFormat($mostVisitedProduct->price) }} </span>
 {{--                                                             <span class="product-old-price">{{ priceFormat($mostVisitedProduct->price) }} </span>--}}
 
                                                             @php
@@ -125,11 +123,19 @@
                                                                 $amazingSale = $mostVisitedProduct->activeAmazingSales();
 
                                                             @endphp
-
                                                             @if(!empty($amazingSale))
-                                                             <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                            <span class="product-old-price">{{ priceFormat($mostVisitedProduct->price) }} </span>
 
-                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
+                                                             <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                            @if(empty($amazingSale->percentage == 100))
+                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price - ($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  )  }} تومان</section>
+                                                                @else
+                                                                    <section class="product-price"> رایگان</section>
+                                                                @endif
+                                                            @else
+
+                                                                <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>
+
                                                             @endif
                                                         </section>
 {{--                                                        <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }}  تومان</section>--}}
@@ -236,20 +242,26 @@
                                                     <section class="product-price-wrapper">
                                                         <section class="product-discount">
 
-                                                            {{--                                                            <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>--}}
-
-                                                            <span class="product-price">{{ priceFormat($offerProduct->price) }} </span>
+                                                            {{--                                                             <span class="product-old-price">{{ priceFormat($mostVisitedProduct->price) }} </span>--}}
 
                                                             @php
 
                                                                 $amazingSale = $offerProduct->activeAmazingSales();
 
                                                             @endphp
-
                                                             @if(!empty($amazingSale))
-                                                                <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                                <span class="product-old-price">{{ priceFormat($offerProduct->price) }} </span>
 
-                                                                <section class="product-price">{{ priceFormat($offerProduct->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
+                                                                <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                                @if(empty($amazingSale->percentage == 100))
+                                                                    <section class="product-price">{{ priceFormat($offerProduct->price - ($offerProduct->price * ($amazingSale->percentage / 100 )  )  )  }} تومان</section>
+                                                                @else
+                                                                    <section class="product-price"> رایگان</section>
+                                                                @endif
+                                                            @else
+
+                                                                <section class="product-price">{{ priceFormat($offerProduct->price) }} تومان</section>
+
                                                             @endif
                                                         </section>
                                                         {{--                                                        <section class="product-price">{{ priceFormat($mostVisitedProduct->price * ($amazingSale->percentage / 100 )  )  }}  تومان</section>--}}

@@ -89,19 +89,30 @@
                                                 <h3>{{ $product->name }}</h3>
                                             </section>
                                             <section class="product-price-wrapper">
-                                                <span class="product-old-price">{{priceFormat($product->price) }}  </span>
-{{--                                                <section class="product-price">{{ number_format($product->price) }}</section>--}}
-                                                @php
+                                                <section class="product-discount">
 
-                                                    $amazingSale = $product->activeAmazingSales();
+                                                    {{--                                                             <span class="product-old-price">{{ priceFormat($mostVisitedProduct->price) }} </span>--}}
 
-                                                @endphp
+                                                    @php
 
-                                                @if(!empty($amazingSale))
-                                                    <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                        $amazingSale = $product->activeAmazingSales();
 
-                                                    <section class="product-price">{{ priceFormat($product->price * ($amazingSale->percentage / 100 )  )  }} تومان</section>
-                                                @endif
+                                                    @endphp
+                                                    @if(!empty($amazingSale))
+                                                        <span class="product-old-price">{{ priceFormat($product->price) }} </span>
+
+                                                        <span class="product-discount-amount" >{{$amazingSale->percentage}}%</span>
+                                                        @if(empty($amazingSale->percentage == 100))
+                                                            <section class="product-price">{{ priceFormat($product->price - ($product->price * ($amazingSale->percentage / 100 )  )  )  }} تومان</section>
+                                                        @else
+                                                            <section class="product-price"> رایگان</section>
+                                                        @endif
+                                                    @else
+
+                                                        <section class="product-price">{{ priceFormat($product->price) }} تومان</section>
+
+                                                    @endif
+                                                </section>
 
                                             </section>
                                         </a>
