@@ -223,6 +223,8 @@
                         @foreach($menus as $menu)
                             <section class="navbar-item"><a href="{{$menu->url}}">{{$menu->name}}</a></section>
                         @endforeach
+                            <section class="navbar-item">@if($Page)<a href="{{route('customer.page',$Page)}}">درباره ما</a>@endif</section>
+                            <section class="navbar-item"><a href="{{route('customer.contact-us')}}">ارتباط با ما</a></section>
                         <hr class="border-bottom">
                         <section class="navbar-item"><a href="javascript:void(0)">دسته بندی</a>
                         </section>
