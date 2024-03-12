@@ -32,7 +32,7 @@
 
                 </div>
                 <div class="col-sm-8">
-                    <img style="width: 400px;height: 200px" src="{{ asset($about_banner->image) }}" alt="">
+                    <img style="width: 300px;height: 200px" src="{{ asset($about_banner->image) }}" alt="">
                 </div>
 
             </div>
