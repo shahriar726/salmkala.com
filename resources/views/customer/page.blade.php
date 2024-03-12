@@ -25,14 +25,16 @@
     <div class="section-gap">
         <div class="container">
             <div class="row justify-content-between align-items-center">
-                <div class="col-md-4">
+                <div class="col-sm-4">
                     <h6>درباره ما</h6>
                     <h2 class="mb-4">ما یک شرکت فروش چند جانبه مستقر در اصفهان هستیم</h2>
                     <p class="text-muted">   {!! $page->body  !!}</p>
+
                 </div>
-                <div class="col-md-6">
-                    <img src="{{ asset($about_banner->image) }}" alt="">
+                <div class="col-sm-8">
+                    <img style="width: 400px;height: 200px" src="{{ asset($about_banner->image) }}" alt="">
                 </div>
+
             </div>
         </div>
     </div>
