@@ -53,24 +53,25 @@ class ProductController extends Controller
             return response()->json(['status' => 3]);
         }
     }
-//    public function addCart(Product $product)
-//    {
-//        if(Auth::check())
-//        {
-//            //toggle => age dashte bashe azash migire nadasht besh mide
-//            $product->user()->toggle([Auth::user()->id]);
-//            //age az qhabl boode bokon 1 agaram nadashete bokon 2
-//            if($product->user->contains(Auth::user()->id)){
-//                return response()->json(['cart_status' => 1]);
-//            }
-//            else{
-//                return response()->json(['cart_status' => 2]);
-//            }
-//        }
-//        else{
-//            return response()->json(['cart_status' => 3]);
-//        }
-//    }
+    public function addCart(Product $product)
+    {
+        if(Auth::check())
+        {
+            //toggle => age dashte bashe azash migire nadasht besh mide
+            $product->user()->toggle([Auth::user()->id]);
+            //age az qhabl boode bokon 1 agaram nadashete bokon 2
+            if($product->user->contains(Auth::user()->id)){
+                return response()->json(['cart_status' => 1]);
+            }
+            else{
+                return response()->json(['cart_status' => 2]);
+            }
+        }
+        else{
+            return response()->json(['cart_status' => 3]);
+        }
+    }
+
     public function addToCompare(Product $product)
     {
         if (Auth::check()) {

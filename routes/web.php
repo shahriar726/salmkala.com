@@ -434,6 +434,7 @@ Route::get('/',[HomeController::class, 'home'])->name('customer.home');
 Route::get('/products/{category?}', [HomeController::class, 'products'])->name('customer.products');
 //page in HomeController
 Route::get('/page/{page:slug}', [HomeController::class, 'page'])->name('customer.page');
+Route::get('/contact_us/', [HomeController::class, 'contactUs'])->name('customer.contact-us');
 //Route::get('/MenuProduct/{category?}', [HomeController::class, 'Menu'])->name('customer.header');
 
 
@@ -475,7 +476,7 @@ Route::namespace('Market')->group(function() {
     Route::get('/product/{product:slug}', [MarketProductController::class, 'product'])->name('customer.market.product');
     Route::post('/add_comment/product/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
     Route::get('/add-to-favorite/product/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
-//    Route::get('/add-cart/product/{product:slug}', [MarketProductController::class, 'addCart'])->name('customer.market.add-cart');
+    Route::get('/add-cart/product/{product:slug}', [MarketProductController::class, 'addCart'])->name('customer.market.add-cart');
 //    Route::get('/add-to-compare/product/{product:slug}', [MarketProductController::class, 'addToCompare'])->name('customer.market.add-to-compare');
     Route::post('/add-rate/product/{product:slug}', [MarketProductController::class, 'addRate'])->name('customer.market.add-rate');
 });

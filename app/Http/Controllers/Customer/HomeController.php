@@ -108,7 +108,8 @@ class HomeController extends Controller
     //page
     public function page(Page $page)
     {
-        return view('customer.page', compact('page'));
+        $about_banners = Banner::where('position', 4)->where('status', 1)->take(2)->get();
+        return view('customer.page', compact('page','about_banners'));
     }
     //header
 //    public function Menu(ProductCategory $category = null){
@@ -118,5 +119,8 @@ class HomeController extends Controller
 //
 //        return view('customer.layouts.header', compact('categories','category'));
 //    }
-
+    public function contactUs()
+    {
+        return view('customer.contact-us');
+    }
 }
